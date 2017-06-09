@@ -13,6 +13,7 @@ defmodule TextClient.Mixfile do
 
   def application do
     [
+      included_applications: [ :hangman ],
       extra_applications: [:logger],
     ]
   end

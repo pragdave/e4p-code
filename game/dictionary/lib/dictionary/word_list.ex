@@ -1,3 +1,4 @@
+
 defmodule Dictionary.WordList do
 
   @me __MODULE__
@@ -7,9 +8,6 @@ defmodule Dictionary.WordList do
   end
 
   def random_word() do
-    if :rand.uniform < 0.33 do
-      Agent.get(@me, fn _ -> exit(:boom) end)
-    end
     Agent.get(@me, &Enum.random/1)
   end
   
