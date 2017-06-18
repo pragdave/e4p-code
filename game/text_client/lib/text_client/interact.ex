@@ -1,9 +1,11 @@
 defmodule TextClient.Interact do
 
+  @hangman_server :hangman@plasma
+  
   alias TextClient.{Player, State}
   
   def start() do
-    Hangman.new_game()
+    new_game()
     |> setup_state()
     |> Player.play()
   end
@@ -15,5 +17,12 @@ defmodule TextClient.Interact do
     }
   end
 
-                                        
+  defp new_game() do
+    Node.connect(@hangman_server)
+    :rpc.call(@hangman_server,
+      Hangman,
+      :new_game,
+      [])
+  end
+  
 end
