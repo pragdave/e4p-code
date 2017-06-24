@@ -1,0 +1,18 @@
+<p>
+  Turns left: <%= @tally.turns_left %>
+</p>
+
+<p>
+  Word so far: <%=  @tally.letters |> Enum.join(" ") %>
+</p>
+
+
+<%= if game_over?(@tally) do %>
+  <%=  new_game_button(@conn) %>
+<% else %>
+  <%= form_for(@conn, hangman_path(@conn, :make_move), [ as: :make_move, method: :put], fn f -> %>
+  <%= text_input(f, :guess) %>
+  <%= submit("Make next move") %>
+<% end) %>
+<% end %>
+
