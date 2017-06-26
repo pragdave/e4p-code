@@ -1,0 +1,5 @@
+<div class="jumbotron">
+  <%= plural_of(@produce, @count) %>
+
+  <%= amount(-1) %>
+</div>
