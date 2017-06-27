@@ -1,0 +1,35 @@
+* hangman dependency
+
+* look at endpoint
+
+* look at channels/user_socket
+
+
+* create assets/js/hangman_socket.js
+
+import {Socket} from "phoenix"
+
+let socket = new Socket("/socket", {})
+socket.connect()
+
+// Now that you are connected, you can join channels with a topic:
+let channel = socket.channel("hangman.game", {})
+channel
+    .join()
+    .receive("ok", resp => {
+        console.log("Joined successfully", resp)
+    })
+    .receive("error", resp => {
+        console.log("Unable to join", resp)
+    })
+
+export default socket
+
+* import from app.js
+
+import socket from "./hangman_socket"
+
+* look at errors in server log and on browser console
+
+
+* npm install vue
